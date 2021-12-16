@@ -483,7 +483,7 @@ begin
     TextColor(White);
 
     // Clean up the temp directory
-    writeln('Checking if ', workingDirectoryRoot, ' exists, and attempting to delete');
+    writeln('Attempting to remove temp directory ', workingDirectoryRoot);
     if DirectoryExists(workingDirectoryRoot) then DeleteDirectory(workingDirectoryRoot, false);
 
     if DirectoryExists(workingDirectoryRoot) then writeln('Could not remove temp directory, please remove manually - ', workingDirectoryRoot);
@@ -495,6 +495,7 @@ begin
       try
         outputSL.Text := jsonReport.FormatJSON;
         outputSL.SaveToFile(outputFilename);
+        WriteLn('Wrote json report to ', outputFilename);
       finally
         outputSL.Free;
       end;
@@ -533,7 +534,7 @@ begin
   WriteLn('  `---`-''| ||  | ''.''|;  :    ;|   | ''  ,/ ''  :  `--''   \   | |--''    ;  :    ;|  , ;');
   WriteLn('  .''__/\_: |;  :    ;|  ,   / ;   : ;--''  :  ,      .-./   |/        |  ,   /  ---''');
   WriteLn('  |   :    :|  ,   /  ---`-''  |   ,/       `--`----''   ''---''          ---`-''');
-  WriteLn('   \   \  /  ---`-''           ''---''');
+  WriteLn('   \   \  /  ---`-''           ''---''  https://github.com/MFernstrom/gitHuntr');
   WriteLn('    `--`-''');
 
   writeln('');
@@ -549,15 +550,13 @@ begin
   writeln('-c                   Regex to match file content');
   writeln;
   writeln('-o                   File to write report json to');
-  //writeln;
-  //writeln('-d');
-  //writeln('--directory    Not yet implemented');
   writeln;
   writeln('-r                   URL for repo to scan');
   writeln;
   writeln('-e                   Perform Entropy search (slow)');
-
-  //'hfcodre', 'help fileregex contentregex outputfile directory repo entropy'
+  writeln;
+  writeln('Example:');
+  writeln('gitHuntr -f .*test.* -c .*auth_token.* -r https://github.com/MFernstrom/TwilioLib -o report.json');
 end;
 
 var
