@@ -24,7 +24,7 @@ Find stuff in GitHub repos and all your branches
 
 
 ## Example
-gitHuntr -f .*test.* -c .*auth_token.* -o report.json -e -r https://github.com/MFernstrom/TwilioLib
+`gitHuntr -f .*test.* -c .*auth_token.* -o report.json -e -r https://github.com/MFernstrom/TwilioLib`
 
 
 ## Platforms
